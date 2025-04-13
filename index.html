@@ -3,66 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PMCH Pulse</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Case Logbook</title>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div id="app">
-        <h1>PMCH Pulse</h1>
-        <p>Login to manage your clinical cases and reflections.</p>
+<!-- Login/Registration Section -->
+<div id="auth-section">
+    <h2 id="auth-title">Welcome</h2>
+    <button id="guest-btn">Enter as Guest</button>
+    <p>Or, you can <span id="switch-to-register" style="color: blue; cursor: pointer;">Register here</span> / <span id="switch-to-login" style="color: blue; cursor: pointer;">Login here</span></p>
+</div>
 
-        <!-- Login / Register Section -->
-        <div id="auth-section">
-            <h2 id="auth-title">Login</h2>
-            
-            <!-- Registration Inputs -->
-            <div id="register-section" style="display: none;">
-                <h3>Register</h3>
-                <input type="email" id="register-email" placeholder="Enter Email" />
-                <input type="password" id="register-password" placeholder="Enter Password" />
-                <button id="register-btn">Register</button>
-                <p id="register-error-message"></p>
-            </div>
-            
-            <!-- Login Inputs -->
-            <div id="login-section">
-                <h3>Login</h3>
-                <input type="email" id="login-email" placeholder="Enter Email" />
-                <input type="password" id="login-password" placeholder="Enter Password" />
-                <button id="login-btn">Login</button>
-                <p id="login-error-message"></p>
-            </div>
-            
-            <!-- Switch Between Login and Register -->
-            <p id="switch-to-register" style="cursor: pointer; color: blue;">Don't have an account? Register here</p>
-            <p id="switch-to-login" style="cursor: pointer; color: blue; display: none;">Already have an account? Login here</p>
-        </div>
+<!-- Register Section -->
+<div id="register-section" style="display:none;">
+    <h2 id="auth-title">Register</h2>
+    <input type="email" id="register-email" placeholder="Email" required><br>
+    <input type="password" id="register-password" placeholder="Password" required><br>
+    <button id="register-btn">Register</button><br>
+    <p>Already have an account? <span id="switch-to-login" style="color: blue; cursor: pointer;">Login here</span></p>
+    <div id="register-error-message" style="color: red;"></div>
+</div>
 
-        <!-- Case Logbook Section -->
-        <div id="case-logbook-section" style="display: none;">
-            <h2>Case Logbook</h2>
-            <input type="text" id="case-title" placeholder="Case Title" />
-            <textarea id="diagnosis" placeholder="Diagnosis"></textarea>
-            <textarea id="treatment-plan" placeholder="Treatment Plan"></textarea>
-            <textarea id="outcome" placeholder="Outcome"></textarea>
-            <textarea id="reflection-notes" placeholder="Reflection Notes"></textarea>
-            <input type="file" id="upload-image" multiple />
-            <button id="save-case">Save Case</button>
-        </div>
+<!-- Login Section -->
+<div id="login-section" style="display:none;">
+    <h2 id="auth-title">Login</h2>
+    <input type="email" id="login-email" placeholder="Email" required><br>
+    <input type="password" id="login-password" placeholder="Password" required><br>
+    <button id="login-btn">Login</button><br>
+    <p>Don't have an account? <span id="switch-to-register" style="color: blue; cursor: pointer;">Register here</span></p>
+    <div id="login-error-message" style="color: red;"></div>
+</div>
 
-        <!-- Case Log Section -->
-        <div id="case-log-section" style="display: none;">
-            <h2>Your Saved Cases</h2>
-            <ul id="case-log-list"></ul>
-        </div>
+<!-- Case Logbook Section -->
+<div id="case-logbook-section" style="display:none;">
+    <h2>Case Logbook</h2>
+    <div>
+        <input type="text" id="case-title" placeholder="Case Title" required><br>
+        <input type="text" id="diagnosis" placeholder="Diagnosis" required><br>
+        <input type="text" id="treatment-plan" placeholder="Treatment Plan" required><br>
+        <input type="text" id="outcome" placeholder="Outcome" required><br>
+        <textarea id="reflection-notes" placeholder="Reflection Notes" required></textarea><br>
+        <input type="file" id="upload-image"><br>
+        <button id="save-case">Save Case</button>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    <script src="script.js"></script>
+    <div id="case-log-section">
+        <h3>Your Cases</h3>
+        <ul id="case-log-list"></ul>
+    </div>
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>

@@ -87,3 +87,48 @@ form button:hover {
   max-width: 150px;
   border-radius: 5px;
 }
+/* Chat Styling */
+.chat-container {
+  width: 80%;
+  margin: 20px auto;
+  background-color: #f4f7fa;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-messages {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.chat-messages div {
+  background-color: #e4e4e4;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+form input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+form input[type="file"] {
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+form button {
+  background-color: #00B4D8;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #008C9E;
+}

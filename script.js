@@ -26,6 +26,7 @@ guestBtn.addEventListener('click', () => {
 });
 
 // Register Function
+const registerBtn = document.getElementById('register-btn');
 registerBtn.addEventListener('click', async () => {
     const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
@@ -44,6 +45,7 @@ registerBtn.addEventListener('click', async () => {
 });
 
 // Login Function
+const loginBtn = document.getElementById('login-btn');
 loginBtn.addEventListener('click', async () => {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
@@ -92,52 +94,3 @@ function showLoginSection() {
 
 // Save Case Function
 saveCaseBtn.addEventListener('click', async () => {
-    const title = document.getElementById('case-title').value;
-    const diagnosis = document.getElementById('diagnosis').value;
-    const treatmentPlan = document.getElementById('treatment-plan').value;
-    const outcome = document.getElementById('outcome').value;
-    const reflectionNotes = document.getElementById('reflection-notes').value;
-    const file = document.getElementById('upload-image').files[0];
-
-    if (title && diagnosis && treatmentPlan && outcome && reflectionNotes) {
-        // For Guest Mode, we don't require user-specific info
-        const caseRef = db.collection('cases').doc();
-        await caseRef.set({
-            title,
-            diagnosis,
-            treatmentPlan,
-            outcome,
-            reflectionNotes,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        });
-
-        // Upload image to Firebase Storage if provided
-        if (file) {
-            const storageRef = storage.ref(`cases/${caseRef.id}/${file.name}`);
-            await storageRef.put(file);
-        }
-
-        alert("Case saved successfully!");
-        loadCases(); // Reload cases
-    }
-});
-
-// Load cases from Firestore
-async function loadCases() {
-    const querySnapshot = await db.collection('cases').get();
-    caseLogList.innerHTML = ''; // Clear previous cases
-
-    querySnapshot.forEach(doc => {
-        const data = doc.data();
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <strong>${data.title}</strong>
-            <p><strong>Diagnosis:</strong> ${data.diagnosis}</p>
-            <p><strong>Treatment:</strong> ${data.treatmentPlan}</p>
-            <p><strong>Outcome:</strong> ${data.outcome}</p>
-            <p><strong>Reflection:</strong> ${data.reflectionNotes}</p>
-        `;
-        caseLogList.appendChild(li);
-    });
-
-    caseLogSection.style.display = 'block

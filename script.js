@@ -8,6 +8,9 @@ const caseLogList = document.getElementById('case-log-list');
 const caseLogbookSection = document.getElementById('case-logbook-section');
 const loginSection = document.getElementById('login-section');
 const registerSection = document.getElementById('register-section');
+const authTitle = document.getElementById('auth-title');
+const switchToRegister = document.getElementById('switch-to-register');
+const switchToLogin = document.getElementById('switch-to-login');
 const registerErrorMessage = document.getElementById('register-error-message');
 const loginErrorMessage = document.getElementById('login-error-message');
 
@@ -24,8 +27,7 @@ registerBtn.addEventListener('click', async () => {
     try {
         await auth.createUserWithEmailAndPassword(email, password);
         alert("Account created successfully. Please login.");
-        registerSection.style.display = 'none';
-        loginSection.style.display = 'block';
+        showLoginSection(); // Show Login after successful Registration
     } catch (error) {
         registerErrorMessage.textContent = error.message;
     }
@@ -45,6 +47,34 @@ loginBtn.addEventListener('click', async () => {
         loginErrorMessage.textContent = "Invalid login credentials.";
     }
 });
+
+// Switch to Register form
+switchToRegister.addEventListener('click', () => {
+    showRegisterSection();
+});
+
+// Switch to Login form
+switchToLogin.addEventListener('click', () => {
+    showLoginSection();
+});
+
+// Show Register section and hide Login section
+function showRegisterSection() {
+    registerSection.style.display = 'block';
+    loginSection.style.display = 'none';
+    switchToRegister.style.display = 'none';
+    switchToLogin.style.display = 'block';
+    authTitle.innerText = "Register";
+}
+
+// Show Login section and hide Register section
+function showLoginSection() {
+    registerSection.style.display = 'none';
+    loginSection.style.display = 'block';
+    switchToRegister.style.display = 'block';
+    switchToLogin.style.display = 'none';
+    authTitle.innerText = "Login";
+}
 
 // Save Case Function
 saveCaseBtn.addEventListener('click', async () => {

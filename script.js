@@ -21,6 +21,7 @@ const auth = firebase.auth();
 
 // Register Function
 registerBtn.addEventListener('click', async () => {
+    console.log('Register button clicked');
     const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
     
@@ -29,12 +30,14 @@ registerBtn.addEventListener('click', async () => {
         alert("Account created successfully. Please login.");
         showLoginSection(); // Show Login after successful Registration
     } catch (error) {
+        console.error(error);
         registerErrorMessage.textContent = error.message;
     }
 });
 
 // Login Function
 loginBtn.addEventListener('click', async () => {
+    console.log('Login button clicked');
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
     
@@ -44,22 +47,26 @@ loginBtn.addEventListener('click', async () => {
         caseLogbookSection.style.display = 'block';
         loadCases();
     } catch (error) {
+        console.error(error);
         loginErrorMessage.textContent = "Invalid login credentials.";
     }
 });
 
 // Switch to Register form
 switchToRegister.addEventListener('click', () => {
+    console.log('Switching to Register form');
     showRegisterSection();
 });
 
 // Switch to Login form
 switchToLogin.addEventListener('click', () => {
+    console.log('Switching to Login form');
     showLoginSection();
 });
 
 // Show Register section and hide Login section
 function showRegisterSection() {
+    console.log('Showing Register section');
     registerSection.style.display = 'block';
     loginSection.style.display = 'none';
     switchToRegister.style.display = 'none';
@@ -69,6 +76,7 @@ function showRegisterSection() {
 
 // Show Login section and hide Register section
 function showLoginSection() {
+    console.log('Showing Login section');
     registerSection.style.display = 'none';
     loginSection.style.display = 'block';
     switchToRegister.style.display = 'block';
@@ -78,6 +86,7 @@ function showLoginSection() {
 
 // Save Case Function
 saveCaseBtn.addEventListener('click', async () => {
+    console.log('Save case button clicked');
     const title = document.getElementById('case-title').value;
     const diagnosis = document.getElementById('diagnosis').value;
     const treatmentPlan = document.getElementById('treatment-plan').value;

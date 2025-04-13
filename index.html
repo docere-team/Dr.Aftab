@@ -12,22 +12,31 @@
         <h1>PMCH Pulse</h1>
         <p>Login to manage your clinical cases and reflections.</p>
 
-        <!-- Register Section -->
-        <div id="register-section">
-            <h2>Register</h2>
-            <input type="email" id="register-email" placeholder="Enter Email" />
-            <input type="password" id="register-password" placeholder="Enter Password" />
-            <button id="register-btn">Register</button>
-            <p id="register-error-message"></p>
-        </div>
-
-        <!-- Login Section -->
-        <div id="login-section" style="display:none;">
-            <h2>Login</h2>
-            <input type="email" id="login-email" placeholder="Enter Email" />
-            <input type="password" id="login-password" placeholder="Enter Password" />
-            <button id="login-btn">Login</button>
-            <p id="login-error-message"></p>
+        <!-- Login / Register Section -->
+        <div id="auth-section">
+            <h2 id="auth-title">Login</h2>
+            
+            <!-- Registration Inputs -->
+            <div id="register-section" style="display: none;">
+                <h3>Register</h3>
+                <input type="email" id="register-email" placeholder="Enter Email" />
+                <input type="password" id="register-password" placeholder="Enter Password" />
+                <button id="register-btn">Register</button>
+                <p id="register-error-message"></p>
+            </div>
+            
+            <!-- Login Inputs -->
+            <div id="login-section">
+                <h3>Login</h3>
+                <input type="email" id="login-email" placeholder="Enter Email" />
+                <input type="password" id="login-password" placeholder="Enter Password" />
+                <button id="login-btn">Login</button>
+                <p id="login-error-message"></p>
+            </div>
+            
+            <!-- Switch Between Login and Register -->
+            <p id="switch-to-register" style="cursor: pointer; color: blue;">Don't have an account? Register here</p>
+            <p id="switch-to-login" style="cursor: pointer; color: blue; display: none;">Already have an account? Login here</p>
         </div>
 
         <!-- Case Logbook Section -->

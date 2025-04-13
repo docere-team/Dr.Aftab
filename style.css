@@ -38,3 +38,52 @@ button {
 button:hover {
   background-color: #008C9E;
 }
+/* Container and Form Styling */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #00B4D8;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input, form textarea, form button {
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+form button {
+  background-color: #00B4D8;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #008C9E;
+}
+
+/* Image Gallery */
+#imageGallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#imageGallery img {
+  max-width: 150px;
+  border-radius: 5px;
+}

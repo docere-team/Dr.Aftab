@@ -1,22 +1,40 @@
 // script.js
 
+const registerBtn = document.getElementById('register-btn');
 const loginBtn = document.getElementById('login-btn');
 const saveCaseBtn = document.getElementById('save-case');
 const caseLogSection = document.getElementById('case-log-section');
 const caseLogList = document.getElementById('case-log-list');
 const caseLogbookSection = document.getElementById('case-logbook-section');
 const loginSection = document.getElementById('login-section');
-const errorMessage = document.getElementById('error-message');
+const registerSection = document.getElementById('register-section');
+const registerErrorMessage = document.getElementById('register-error-message');
+const loginErrorMessage = document.getElementById('login-error-message');
 
 // Initialize Firebase
 const db = firebase.firestore();
 const storage = firebase.storage();
 const auth = firebase.auth();
 
+// Register Function
+registerBtn.addEventListener('click', async () => {
+    const email = document.getElementById('register-email').value;
+    const password = document.getElementById('register-password').value;
+    
+    try {
+        await auth.createUserWithEmailAndPassword(email, password);
+        alert("Account created successfully. Please login.");
+        registerSection.style.display = 'none';
+        loginSection.style.display = 'block';
+    } catch (error) {
+        registerErrorMessage.textContent = error.message;
+    }
+});
+
 // Login Function
 loginBtn.addEventListener('click', async () => {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
     
     try {
         await auth.signInWithEmailAndPassword(email, password);
@@ -24,7 +42,7 @@ loginBtn.addEventListener('click', async () => {
         caseLogbookSection.style.display = 'block';
         loadCases();
     } catch (error) {
-        errorMessage.textContent = "Invalid login credentials.";
+        loginErrorMessage.textContent = "Invalid login credentials.";
     }
 });
 

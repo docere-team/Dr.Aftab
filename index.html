@@ -58,3 +58,43 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinical Case Logbook</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Clinical Case Logbook</h1>
+
+    <form id="logbookForm" enctype="multipart/form-data">
+      <label for="caseTitle">Case Title:</label>
+      <input type="text" id="caseTitle" name="caseTitle" required><br>
+
+      <label for="diagnosis">Diagnosis:</label>
+      <textarea id="diagnosis" name="diagnosis" required></textarea><br>
+
+      <label for="treatmentPlan">Treatment Plan:</label>
+      <textarea id="treatmentPlan" name="treatmentPlan" required></textarea><br>
+
+      <label for="outcome">Outcome:</label>
+      <textarea id="outcome" name="outcome" required></textarea><br>
+
+      <label for="reflectionNotes">Reflection Notes:</label>
+      <textarea id="reflectionNotes" name="reflectionNotes"></textarea><br>
+
+      <label for="imageUpload">Upload Images:</label>
+      <input type="file" id="imageUpload" name="imageUpload" accept="image/*" multiple><br>
+
+      <button type="submit">Save Case</button>
+    </form>
+
+    <div id="imageGallery"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

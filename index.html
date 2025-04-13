@@ -1,100 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clinical Logbook</title>
-  <link rel="manifest" href="/manifest.json">
-  <link rel="icon" href="/icons/launcher-icon-192x192.png" />
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMCH Pulse</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Clinical Logbook</h1>
-    <p>Track and manage your clinical cases.</p>
 
-    <!-- Install Button -->
-    <button id="installBtn" style="display: none;">Install App</button>
-  </div>
+    <div id="app">
+        <h1>PMCH Pulse</h1>
+        <p>Login to manage your clinical cases and reflections.</p>
 
-  <script src="app.js"></script>
+        <!-- Login Section -->
+        <div id="login-section">
+            <input type="email" id="email" placeholder="Enter Email" />
+            <input type="password" id="password" placeholder="Enter Password" />
+            <button id="login-btn">Login</button>
+            <p id="error-message"></p>
+        </div>
 
-  <script>
-    let deferredPrompt;
-    const installBtn = document.getElementById('installBtn');
+        <!-- Case Logbook Section -->
+        <div id="case-logbook-section" style="display: none;">
+            <h2>Case Logbook</h2>
+            <input type="text" id="case-title" placeholder="Case Title" />
+            <textarea id="diagnosis" placeholder="Diagnosis"></textarea>
+            <textarea id="treatment-plan" placeholder="Treatment Plan"></textarea>
+            <textarea id="outcome" placeholder="Outcome"></textarea>
+            <textarea id="reflection-notes" placeholder="Reflection Notes"></textarea>
+            <input type="file" id="upload-image" multiple />
+            <button id="save-case">Save Case</button>
+        </div>
 
-    // Listen for the beforeinstallprompt event
-    window.addEventListener('beforeinstallprompt', (event) => {
-      event.preventDefault();
-      deferredPrompt = event;
-      installBtn.style.display = 'block'; // Show install button
-    });
+        <!-- Case Log Section -->
+        <div id="case-log-section" style="display: none;">
+            <h2>Your Saved Cases</h2>
+            <ul id="case-log-list"></ul>
+        </div>
+    </div>
 
-    // When the install button is clicked, show the install prompt
-    installBtn.addEventListener('click', () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt(); // Show the install prompt
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the A2HS prompt');
-          } else {
-            console.log('User dismissed the A2HS prompt');
-          }
-          deferredPrompt = null; // Reset deferredPrompt
-        });
-      }
-    });
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="script.js"></script>
 
-    // Register the service worker
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js').then((registration) => {
-          console.log('Service Worker registered with scope:', registration.scope);
-        }).catch((error) => {
-          console.log('Service Worker registration failed:', error);
-        });
-      });
-    }
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clinical Case Logbook</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h1>Clinical Case Logbook</h1>
-
-    <form id="logbookForm" enctype="multipart/form-data">
-      <label for="caseTitle">Case Title:</label>
-      <input type="text" id="caseTitle" name="caseTitle" required><br>
-
-      <label for="diagnosis">Diagnosis:</label>
-      <textarea id="diagnosis" name="diagnosis" required></textarea><br>
-
-      <label for="treatmentPlan">Treatment Plan:</label>
-      <textarea id="treatmentPlan" name="treatmentPlan" required></textarea><br>
-
-      <label for="outcome">Outcome:</label>
-      <textarea id="outcome" name="outcome" required></textarea><br>
-
-      <label for="reflectionNotes">Reflection Notes:</label>
-      <textarea id="reflectionNotes" name="reflectionNotes"></textarea><br>
-
-      <label for="imageUpload">Upload Images:</label>
-      <input type="file" id="imageUpload" name="imageUpload" accept="image/*" multiple><br>
-
-      <button type="submit">Save Case</button>
-    </form>
-
-    <div id="imageGallery"></div>
-  </div>
-
-  <script src="app.js"></script>
 </body>
 </html>

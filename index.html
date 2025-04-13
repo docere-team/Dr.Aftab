@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinical Logbook</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/launcher-icon-192x192.png" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Clinical Logbook</h1>
+  <p>Track and manage your clinical cases.</p>
 
+  <!-- App Content goes here -->
+
+  <script src="app.js"></script>
+
+  <!-- Install prompt handling -->
+  <script>
+    let deferredPrompt;
+    const installBtn = document.createElement('button');
+    installBtn.textContent = 'Install App';
+    document.body.appendChild(installBtn);
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault(); // Prevent the default install prompt
+      deferredPrompt = event;
+      installBtn.style.display = 'block'; // Show install button
+    });
+
+    installBtn.addEventListener('click', () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt(); // Show the native install prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the A2HS prompt');
+          } else {
+            console.log('User dismissed the A2HS prompt');
+          }
+          deferredPrompt = null;
+        });
+      }
+    });
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        }).catch((error) => {
+          console.log('Service Worker registration failed:', error);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

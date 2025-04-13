@@ -24,14 +24,18 @@ registerBtn.addEventListener('click', async () => {
     console.log('Register button clicked');
     const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
-    
-    try {
-        await auth.createUserWithEmailAndPassword(email, password);
-        alert("Account created successfully. Please login.");
-        showLoginSection(); // Show Login after successful Registration
-    } catch (error) {
-        console.error(error);
-        registerErrorMessage.textContent = error.message;
+
+    if (email && password) {
+        try {
+            await auth.createUserWithEmailAndPassword(email, password);
+            alert("Account created successfully. Please login.");
+            showLoginSection(); // Show Login after successful Registration
+        } catch (error) {
+            console.error(error);
+            registerErrorMessage.textContent = error.message;
+        }
+    } else {
+        registerErrorMessage.textContent = "Please enter email and password.";
     }
 });
 
@@ -40,15 +44,19 @@ loginBtn.addEventListener('click', async () => {
     console.log('Login button clicked');
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
-    
-    try {
-        await auth.signInWithEmailAndPassword(email, password);
-        loginSection.style.display = 'none';
-        caseLogbookSection.style.display = 'block';
-        loadCases();
-    } catch (error) {
-        console.error(error);
-        loginErrorMessage.textContent = "Invalid login credentials.";
+
+    if (email && password) {
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            loginSection.style.display = 'none';
+            caseLogbookSection.style.display = 'block';
+            loadCases();
+        } catch (error) {
+            console.error(error);
+            loginErrorMessage.textContent = "Invalid login credentials.";
+        }
+    } else {
+        loginErrorMessage.textContent = "Please enter email and password.";
     }
 });
 
@@ -96,7 +104,7 @@ saveCaseBtn.addEventListener('click', async () => {
 
     if (title && diagnosis && treatmentPlan && outcome && reflectionNotes) {
         const userId = auth.currentUser.uid;
-        
+
         // Save case data to Firestore
         const caseRef = db.collection('cases').doc();
         await caseRef.set({
@@ -124,7 +132,7 @@ saveCaseBtn.addEventListener('click', async () => {
 async function loadCases() {
     const userId = auth.currentUser.uid;
     const querySnapshot = await db.collection('cases').where('userId', '==', userId).get();
-    
+
     caseLogList.innerHTML = ''; // Clear previous cases
 
     querySnapshot.forEach(doc => {

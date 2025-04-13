@@ -12,12 +12,22 @@
         <h1>PMCH Pulse</h1>
         <p>Login to manage your clinical cases and reflections.</p>
 
+        <!-- Register Section -->
+        <div id="register-section">
+            <h2>Register</h2>
+            <input type="email" id="register-email" placeholder="Enter Email" />
+            <input type="password" id="register-password" placeholder="Enter Password" />
+            <button id="register-btn">Register</button>
+            <p id="register-error-message"></p>
+        </div>
+
         <!-- Login Section -->
-        <div id="login-section">
-            <input type="email" id="email" placeholder="Enter Email" />
-            <input type="password" id="password" placeholder="Enter Password" />
+        <div id="login-section" style="display:none;">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Enter Email" />
+            <input type="password" id="login-password" placeholder="Enter Password" />
             <button id="login-btn">Login</button>
-            <p id="error-message"></p>
+            <p id="login-error-message"></p>
         </div>
 
         <!-- Case Logbook Section -->

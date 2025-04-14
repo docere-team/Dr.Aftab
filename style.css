@@ -62,3 +62,78 @@ body {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.logbook-container {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 600px;
+  margin: 40px auto;
+  box-shadow: 0 10px 25px rgba(0, 172, 193, 0.2);
+}
+
+h2, h3 {
+  text-align: center;
+  color: #00796b;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: 1px solid #b2dfdb;
+  border-radius: 10px;
+  font-size: 16px;
+  resize: vertical;
+}
+
+button {
+  background: #00acc1;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #00838f;
+}
+
+#statusMessage {
+  text-align: center;
+  margin-top: 10px;
+  color: green;
+  font-weight: bold;
+}
+
+#caseList {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+#caseList li {
+  background: #e0f2f1;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+  font-size: 15px;
+}

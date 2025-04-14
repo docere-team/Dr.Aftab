@@ -1,37 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Logbook</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#a7e3f2"/>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <title>PMCH Pulse</title>
 </head>
 <body>
-    
+  <div class="app-container">
+    <h1 class="welcome">Welcome back, Doc!</h1>
+    <p class="quote" id="quote"></p>
 
-    <!-- Case Logbook Section -->
-    <div id="case-logbook-section" style="display:none;">
-        <h2>Case Logbook</h2>
-        <div>
-            <input type="text" id="case-title" placeholder="Case Title" required><br>
-            <input type="text" id="diagnosis" placeholder="Diagnosis" required><br>
-            <input type="text" id="treatment-plan" placeholder="Treatment Plan" required><br>
-            <input type="text" id="outcome" placeholder="Outcome" required><br>
-            <textarea id="reflection-notes" placeholder="Reflection Notes" required></textarea><br>
-            <input type="file" id="upload-image"><br>
-            <button id="save-case" class="auth-btn">Save Case</button>
-        </div>
-
-        <div id="case-log-section">
-            <h3>Your Cases</h3>
-            <ul id="case-log-list"></ul>
-        </div>
+    <div class="nav">
+      <a href="attendance.html" class="card">Attendance Tracker</a>
+      <a href="ward-duty.html" class="card">Ward Duty Log</a>
+      <a href="pomodoro.html" class="card">Pomodoro Timer</a>
+      <a href="case-logbook.html" class="card highlight">Case Logbook</a>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>

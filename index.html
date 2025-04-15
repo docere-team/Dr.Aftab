@@ -13,33 +13,40 @@
         <p>Your future doctor in the making!</p>
     </header>
 
-    <!-- About Me Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I'm Dr. Aftab. Currently navigating through med school, caffeine-fueled study sessions, and a dream for a better tomorrow.</p>
-    </section>
+    <!-- Main Content -->
+    <main>
+        <!-- About Me Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I am Dr. Aftab, currently navigating through med school with my eyes on the future. Fueled by caffeine and dreams of becoming a great doctor!</p>
+        </section>
 
-    <!-- Case Logbook Section -->
-    <section id="case-logbook">
-        <h2>My Case Logbook</h2>
-        <p>Documenting clinical cases and keeping track of my medical journey.</p>
-        <button onclick="openCaseLogPopup()">Add New Case</button>
-    </section>
+        <!-- Case Logbook Section -->
+        <section id="case-logbook">
+            <h2>My Case Logbook</h2>
+            <p>Documenting clinical cases and keeping track of my medical journey.</p>
+            <button class="btn" onclick="openCaseLogPopup()">Add New Case</button>
+        </section>
 
-    <!-- Pop-Up for Case Logbook -->
-    <div id="case-log-popup" class="popup">
-        <div class="popup-content">
-            <span class="close-btn" onclick="closeCaseLogPopup()">&times;</span>
-            <h3>Add New Case</h3>
-            <form id="case-form">
-                <label for="case-name">Case Name:</label>
-                <input type="text" id="case-name" required>
-                <label for="case-details">Details:</label>
-                <textarea id="case-details" required></textarea>
-                <button type="submit">Save Case</button>
-            </form>
+        <!-- Pop-Up for Case Logbook -->
+        <div id="case-log-popup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closeCaseLogPopup()">&times;</span>
+                <h3>Add New Case</h3>
+                <form id="case-form">
+                    <label for="case-name">Case Name:</label>
+                    <input type="text" id="case-name" required placeholder="Enter case name">
+                    <label for="case-details">Details:</label>
+                    <textarea id="case-details" required placeholder="Enter case details"></textarea>
+                    <button class="btn">Save Case</button>
+                </form>
+            </div>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Dr. Aftab | Medical Journey</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

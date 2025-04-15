@@ -5,36 +5,78 @@
     box-sizing: border-box;
 }
 
-/* Body and Global Styles */
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
     background-color: #f0f8ff;
     color: #333;
+    padding: 0;
+    margin: 0;
 }
 
 /* Header Styles */
 header {
     background-color: #4db8b1;
-    color: #fff;
-    padding: 20px;
+    color: white;
     text-align: center;
+    padding: 30px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
+    font-style: italic;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Section Styles */
 section {
-    margin: 20px;
-    padding: 15px;
-    background-color: #fff;
+    background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
 }
 
 section h2 {
     color: #4db8b1;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
-/* Popup Styling */
+section p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn {
+    background-color: #4db8b1;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #3a9995;
+}
+
+/* Pop-Up Styles */
 .popup {
     display: none;
     position: fixed;
@@ -48,43 +90,63 @@ section h2 {
 }
 
 .popup-content {
-    background-color: #fff;
-    padding: 20px;
+    background-color: white;
+    padding: 30px;
     border-radius: 8px;
-    max-width: 400px;
+    max-width: 500px;
     width: 90%;
 }
 
-.close-btn {
-    font-size: 24px;
-    cursor: pointer;
+.popup-content h3 {
+    margin-bottom: 20px;
+}
+
+.popup .close-btn {
+    font-size: 30px;
     color: #aaa;
-    float: right;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
-form label {
-    display: block;
-    margin: 10px 0 5px;
+.popup form {
+    display: flex;
+    flex-direction: column;
 }
 
-form input,
-form textarea {
-    width: 100%;
-    padding: 10px;
+.popup form input,
+.popup form textarea {
+    padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
     border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
-form button {
+.popup form textarea {
+    height: 150px;
+}
+
+/* Footer Styles */
+footer {
     background-color: #4db8b1;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    margin-top: 50px;
 }
 
-form button:hover {
-    background-color: #3a9995;
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    .btn {
+        width: 100%;
+    }
 }

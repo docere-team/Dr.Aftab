@@ -150,3 +150,32 @@ footer {
         width: 100%;
     }
 }
+#saved-cases {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.case-card {
+    background-color: #e6f7ff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+.case-card button {
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #0099cc;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.case-card button:hover {
+    background-color: #007399;
+}

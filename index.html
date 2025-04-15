@@ -23,23 +23,35 @@
 
         <!-- Case Logbook Section -->
         <section id="case-logbook">
+            <!-- Display Saved Cases -->
+<div id="saved-cases"></div>
             <h2>My Case Logbook</h2>
             <p>Documenting clinical cases and keeping track of my medical journey.</p>
             <button class="btn" onclick="openCaseLogPopup()">Add New Case</button>
         </section>
 
         <!-- Pop-Up for Case Logbook -->
-        <div id="case-log-popup" class="popup">
-            <div class="popup-content">
-                <span class="close-btn" onclick="closeCaseLogPopup()">&times;</span>
-                <h3>Add New Case</h3>
-                <form id="case-form">
-                    <label for="case-name">Case Name:</label>
-                    <input type="text" id="case-name" required placeholder="Enter case name">
-                    <label for="case-details">Details:</label>
-                    <textarea id="case-details" required placeholder="Enter case details"></textarea>
-                    <button class="btn">Save Case</button>
-                </form>
+        <form id="case-form">
+    <label for="patient-name">Patient Name:</label>
+    <input type="text" id="patient-name" required placeholder="Enter patient's name">
+
+    <label for="case-name">Case Title:</label>
+    <input type="text" id="case-name" required placeholder="Enter case title">
+
+    <label for="diagnosis">Diagnosis:</label>
+    <input type="text" id="diagnosis" required placeholder="Enter diagnosis">
+
+    <label for="treatment">Treatment Plan:</label>
+    <textarea id="treatment" required placeholder="Enter treatment plan"></textarea>
+
+    <label for="scan">Upload Scan/Report:</label>
+    <input type="file" id="scan">
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" required>
+
+    <button class="btn" type="submit">Save Case</button>
+        </form>
             </div>
         </div>
     </main>

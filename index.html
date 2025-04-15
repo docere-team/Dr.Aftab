@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="theme-color" content="#a7e3f2"/>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json" />
-  <title>PMCH Pulse</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Aftab's Medical Journey</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app-container">
-    <h1 class="welcome">Welcome back, Doc!</h1>
-    <p class="quote" id="quote"></p>
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to Dr. Aftab's World</h1>
+        <p>Your future doctor in the making!</p>
+    </header>
 
-    <div class="nav">
-      <a href="attendance.html" class="card">Attendance Tracker</a>
-      <a href="ward-duty.html" class="card">Ward Duty Log</a>
-      <a href="pomodoro.html" class="card">Pomodoro Timer</a>
-      <a href="case-logbook.html" class="card highlight">Case Logbook</a>
+    <!-- About Me Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I'm Dr. Aftab. Currently navigating through med school, caffeine-fueled study sessions, and a dream for a better tomorrow.</p>
+    </section>
+
+    <!-- Case Logbook Section -->
+    <section id="case-logbook">
+        <h2>My Case Logbook</h2>
+        <p>Documenting clinical cases and keeping track of my medical journey.</p>
+        <button onclick="openCaseLogPopup()">Add New Case</button>
+    </section>
+
+    <!-- Pop-Up for Case Logbook -->
+    <div id="case-log-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closeCaseLogPopup()">&times;</span>
+            <h3>Add New Case</h3>
+            <form id="case-form">
+                <label for="case-name">Case Name:</label>
+                <input type="text" id="case-name" required>
+                <label for="case-details">Details:</label>
+                <textarea id="case-details" required></textarea>
+                <button type="submit">Save Case</button>
+            </form>
+        </div>
     </div>
-  </div>
 
-  <script src="main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

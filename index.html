@@ -1,67 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Aftab's Medical Journey</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Header Section -->
-    <header>
-        <h1>Welcome to Dr. Aftab's World</h1>
-        <p>Your future doctor in the making!</p>
-    </header>
+import React, { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  CalendarDays,
+  Dumbbell,
+  BookOpenCheck,
+  Timer,
+  StickyNote,
+  PlusCircle
+} from "lucide-react";
 
-    <!-- Main Content -->
-    <main>
-        <!-- About Me Section -->
-        <section id="about">
-            <h2>About Me</h2>
-            <p>I am Dr. Aftab, currently navigating through med school with my eyes on the future. Fueled by caffeine and dreams of becoming a great doctor!</p>
-        </section>
+export default function Dashboard() {
+  const [flashcards, setFlashcards] = useState([]);
+  const [newCard, setNewCard] = useState({ question: "", answer: "" });
 
-        <!-- Case Logbook Section -->
-        <section id="case-logbook">
-            <!-- Display Saved Cases -->
-<div id="saved-cases"></div>
-            <h2>My Case Logbook</h2>
-            <p>Documenting clinical cases and keeping track of my medical journey.</p>
-            <button class="btn" onclick="openCaseLogPopup()">Add New Case</button>
-        </section>
+  const addFlashcard = () => {
+    if (newCard.question && newCard.answer) {
+      setFlashcards([...flashcards, newCard]);
+      setNewCard({ question: "", answer: "" });
+    }
+  };
 
-        <button class="btn" onclick="exportToPDF()">Export All Cases (PDF)</button>
+  return (
+    <main className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <h1 className="text-3xl font-bold col-span-full">Welcome, Dr. Aftab</h1>
 
-        <!-- Pop-Up for Case Logbook -->
-        <form id="case-form">
-    <label for="patient-name">Patient Name:</label>
-    <input type="text" id="patient-name" required placeholder="Enter patient's name">
-
-    <label for="case-name">Case Title:</label>
-    <input type="text" id="case-name" required placeholder="Enter case title">
-
-    <label for="diagnosis">Diagnosis:</label>
-    <input type="text" id="diagnosis" required placeholder="Enter diagnosis">
-
-    <label for="treatment">Treatment Plan:</label>
-    <textarea id="treatment" required placeholder="Enter treatment plan"></textarea>
-
-    <label for="scan">Upload Scan/Report:</label>
-    <input type="file" id="scan">
-
-    <label for="date">Date:</label>
-    <input type="date" id="date" required>
-
-    <button class="btn" type="submit">Save Case</button>
-        </form>
+      <Card className="rounded-2xl shadow-md">
+        <CardContent className="p-4">
+          <div className="flex items-center gap-4">
+            <Timer className="w-8 h-8 text-blue-500" />
+            <div>
+              <h2 className="text-xl font-semibold">Today's Routine</h2>
+              <p className="text-gray-600 text-sm">Study, Gym, Classes & Revision</p>
             </div>
-        </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="rounded-2xl shadow-md">
+        <CardContent className="p-4">
+          <div className="flex items-center gap-4">
+            <BookOpenCheck className="w-8 h-8 text-green-500" />
+            <div>
+              <h2 className="text-xl font-semibold">Flashcards & MCQs</h2>
+              <p className="text-gray-600 text-sm">Track and practice daily</p>
+            </div>
+          </div>
+          <div className="mt-4">
+            <Input
+              placeholder="Question"
+              value={newCard.question}
+              onChange={(e) => setNewCard({ ...newCard, question: e.target.value })}
+              className="mb-2"
+            />
+            <Input
+              placeholder="Answer"
+              value={newCard.answer}
+              onChange={(e) => setNewCard({ ...newCard, answer: e.target.value })}
+              className="mb-2"
+            />
+            <Button onClick={addFlashcard} className="mb-4 flex items-center gap-2">
+              <PlusCircle className="w-4 h-4" /> Add Flashcard
+            </Button>
+            <div className="space-y-2">
+              {flashcards.map((card, index) => (
+                <div key={index} className="p-2 border rounded-xl">
+                  <p className="font-medium">Q: {card.question}</p>
+                  <p className="text-sm text-gray-600">A: {card.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="rounded-2xl shadow-md">
+        <CardContent className="p-4">
+          <div className="flex items-center gap-4">
+            <Dumbbell className="w-8 h-8 text-red-500" />
+            <div>
+              <h2 className="text-xl font-semibold">Gym Progress</h2>
+              <p className="text-gray-600 text-sm">Track weight, workouts, rest</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="rounded-2xl shadow-md">
+        <CardContent className="p-4">
+          <div className="flex items-center gap-4">
+            <CalendarDays className="w-8 h-8 text-purple-500" />
+            <div>
+              <h2 className="text-xl font-semibold">Weekly Goals</h2>
+              <p className="text-gray-600 text-sm">Set and review academic + fitness goals</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="rounded-2xl shadow-md col-span-full">
+        <CardContent className="p-4">
+          <div className="flex items-center gap-4">
+            <StickyNote className="w-8 h-8 text-yellow-500" />
+            <div>
+              <h2 className="text-xl font-semibold">Daily Journal</h2>
+              <p className="text-gray-600 text-sm">Reflect on your progress and thoughts</p>
+            </div>
+          </div>
+          <Textarea
+            placeholder="Write your journal entry here..."
+            className="mt-4"
+          />
+          <Button className="mt-2">Save Entry</Button>
+        </CardContent>
+      </Card>
     </main>
-
-    <footer>
-        <p>© 2025 Dr. Aftab | Medical Journey</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+  );
+}
